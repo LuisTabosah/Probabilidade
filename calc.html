@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Probabilidade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://cdn.wallpapersafari.com/62/40/kd0me9.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        .names {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 1rem;
+            color: black;
+        }
+        button {
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #f0f0f0;
+        }
+        .gif-container {
+            margin-top: 10px; /* Ajuste o espaço entre o título e o GIF */
+        }
+        .gif-container img {
+            width: 100px; /* Ajuste o tamanho do GIF conforme necessário */
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="names">Luis Tabosa e Thiago dos Anjos 3*B</div>
+    
+    <div>
+        <h1>Calculadora de Probabilidade</h1>
+        
+        <div class="gif-container">
+            <img src="https://afoxinjapan.com/wp-content/uploads/2020/09/Gengar-Dance.gif" alt="Gengar Dançando">
+        </div>
+
+        <p>Digite o número de eventos favoráveis e o espaço amostral para calcular a probabilidade.</p>
+        
+        <label for="favoraveis">Eventos Favoráveis:</label>
+        <input type="number" id="favoraveis" placeholder="Ex: 5">
+        <br>
+        
+        <label for="amostral">Espaço Amostral:</label>
+        <input type="number" id="amostral" placeholder="Ex: 20">
+        <br>
+        
+        <button onclick="calcularProbabilidade()">Calcular</button>
+        
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function calcularProbabilidade() {
+            let favoraveis = document.getElementById('favoraveis').value;
+            let amostral = document.getElementById('amostral').value;
+            
+            if (favoraveis && amostral && amostral > 0) {
+                let probabilidade = favoraveis / amostral;
+                document.getElementById('resultado').textContent = 
+                    "A probabilidade é: " + (probabilidade * 100).toFixed(2) + "%";
+            } else {
+                document.getElementById('resultado').textContent = "Por favor, insira valores válidos.";
+            }
+        }
+    </script>
+</body>
+</html>
