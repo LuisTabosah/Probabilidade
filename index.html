@@ -1,92 +1,307 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Probabilidade</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url('https://cdn.wallpapersafari.com/62/40/kd0me9.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-        }
-        .names {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.2rem;
-        }
-        input, button {
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 1rem;
-            color: black;
-        }
-        button {
-            background-color: white;
-            color: black;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #f0f0f0;
-        }
-        .gif-container {
-            margin-top: 10px; /* Ajuste o espaço entre o título e o GIF */
-        }
-        .gif-container img {
-            width: 100px; /* Ajuste o tamanho do GIF conforme necessário */
-            border-radius: 10px;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Skill Trees - FFT</title>
+<style>
+  body {
+    background: #0a0a0a;
+    color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+  }
+  h1 {
+    color: #ffff00;
+  }
+  .tree {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .card {
+    background: #222;
+    border: 2px solid #555;
+    border-radius: 12px;
+    padding: 15px 20px;
+    width: 180px;
+    box-shadow: 0 0 10px #333;
+  }
+  .classname {
+    color: #ffff00;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .skill {
+    display: block;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  .damage { color: #ff4040; }
+  .heal { color: #40ff40; }
+  .support { color: #40bfff; }
+  .buff { color: #ff9900; }
+
+  table {
+    margin: 40px auto;
+    border-collapse: collapse;
+    width: 600px;
+  }
+  th, td {
+    border: 1px solid #555;
+    padding: 10px;
+    font-size: 14px;
+  }
+  th {
+    background-color: #333;
+    color: #ffff00;
+  }
+</style>
 </head>
 <body>
-    <div class="names">Luis Tabosa e Thiago dos Anjos 3*B</div>
-    
-    <div>
-        <h1>Calculadora de Probabilidade</h1>
-        
-        <div class="gif-container">
-            <img src="https://afoxinjapan.com/wp-content/uploads/2020/09/Gengar-Dance.gif" alt="Gengar Dançando">
-        </div>
 
-        <p>Digite o número de eventos favoráveis e o espaço amostral para calcular a probabilidade.</p>
-        
-        <label for="favoraveis">Eventos Favoráveis:</label>
-        <input type="number" id="favoraveis" placeholder="Ex: 5">
-        <br>
-        
-        <label for="amostral">Espaço Amostral:</label>
-        <input type="number" id="amostral" placeholder="Ex: 20">
-        <br>
-        
-        <button onclick="calcularProbabilidade()">Calcular</button>
-        
-        <p id="resultado"></p>
-    </div>
+<h1>Skill Trees - FFT</h1>
 
-    <script>
-        function calcularProbabilidade() {
-            let favoraveis = document.getElementById('favoraveis').value;
-            let amostral = document.getElementById('amostral').value;
-            
-            if (favoraveis && amostral && amostral > 0) {
-                let probabilidade = favoraveis / amostral;
-                document.getElementById('resultado').textContent = 
-                    "A probabilidade é: " + (probabilidade * 100).toFixed(2) + "%";
-            } else {
-                document.getElementById('resultado').textContent = "Por favor, insira valores válidos.";
-            }
-        }
-    </script>
-</body>
-</html>
+<!-- Samurai (Dano) -->
+<h2>Samurai (Dano)</h2>
+<div class="tree">
+  <div class="card">
+    <div class="classname">Samurai</div>
+    <span class="skill damage">Piercing Strike</span>
+    <span class="skill buff">Haste</span>
+    <span class="skill support">Counter</span>
+  </div>
+  <div class="card">
+    <div class="classname">Squire</div>
+    <span class="skill support">Attack Boost</span>
+    <span class="skill support">Item</span>
+  </div>
+  <div class="card">
+    <div class="classname">Knight</div>
+    <span class="skill damage">Power Break</span>
+    <span class="skill buff">Shout</span>
+  </div>
+  <div class="card">
+    <div class="classname">Monk</div>
+    <span class="skill damage">Chakra</span>
+    <span class="skill buff">Martial Arts</span>
+  </div>
+</div>
+
+<h3>Build Final do Samurai (Dano)</h3>
+<table>
+  <tr>
+    <th>Slot</th>
+    <th>Escolha</th>
+    <th>Motivo</th>
+    <th>Signo</th>
+  </tr>
+  <tr>
+    <td>Primário</td>
+    <td>Samurai</td>
+    <td>Habilidades de dano e counter para suportar o time</td>
+    <td>Virgem ♍</td>
+  </tr>
+  <tr>
+    <td>Habilidade Secundária</td>
+    <td>Monk</td>
+    <td>Melhoria de dano com habilidades de artes marciais</td>
+    <td>Virgem ♍</td>
+  </tr>
+  <tr>
+    <td>Reação</td>
+    <td>Counter</td>
+    <td>Contra-ataque ao ser atacado</td>
+    <td>Virgem ♍</td>
+  </tr>
+  <tr>
+    <td>Suporte</td>
+    <td>Item</td>
+    <td>Curar e suportar o time com itens</td>
+    <td>Virgem ♍</td>
+  </tr>
+  <tr>
+    <td>Movimento</td>
+    <td>Move+2</td>
+    <td>Mobilidade adicional para posicionamento estratégico</td>
+    <td>Virgem ♍</td>
+  </tr>
+</table>
+
+<!-- Samurai de Lança -->
+<h2>Samurai de Lança</h2>
+<div class="tree">
+  <div class="card">
+    <div class="classname">Samurai</div>
+    <span class="skill damage">Piercing Strike</span>
+    <span class="skill buff">Haste</span>
+    <span class="skill support">Counter</span>
+  </div>
+  <div class="card">
+    <div class="classname">Squire</div>
+    <span class="skill support">Attack Boost</span>
+    <span class="skill support">Item</span>
+  </div>
+  <div class="card">
+    <div class="classname">Lancer</div>
+    <span class="skill damage">Jump</span>
+    <span class="skill buff">Quick Step</span>
+  </div>
+</div>
+
+<h3>Build Final do Samurai de Lança</h3>
+<table>
+  <tr>
+    <th>Slot</th>
+    <th>Escolha</th>
+    <th>Motivo</th>
+    <th>Signo</th>
+  </tr>
+  <tr>
+    <td>Primário</td>
+    <td>Samurai</td>
+    <td>Habilidades de dano e counter para suportar o time</td>
+    <td>Capricórnio ♑</td>
+  </tr>
+  <tr>
+    <td>Habilidade Secundária</td>
+    <td>Lancer</td>
+    <td>Habilidade de dano com salto e controle de distância</td>
+    <td>Capricórnio ♑</td>
+  </tr>
+  <tr>
+    <td>Reação</td>
+    <td>Counter</td>
+    <td>Contra-ataque ao ser atacado</td>
+    <td>Capricórnio ♑</td>
+  </tr>
+  <tr>
+    <td>Suporte</td>
+    <td>Item</td>
+    <td>Curar e suportar o time com itens</td>
+    <td>Capricórnio ♑</td>
+  </tr>
+  <tr>
+    <td>Movimento</td>
+    <td>Move+2</td>
+    <td>Mobilidade para se posicionar adequadamente</td>
+    <td>Capricórnio ♑</td>
+  </tr>
+</table>
+
+<!-- Black Mage -->
+<h2>Black Mage</h2>
+<div class="tree">
+  <div class="card">
+    <div class="classname">Black Mage</div>
+    <span class="skill damage">Fire</span>
+    <span class="skill damage">Blizzard</span>
+    <span class="skill damage">Thunder</span>
+  </div>
+  <div class="card">
+    <div class="classname">Elementalist</div>
+    <span class="skill damage">Flare</span>
+    <span class="skill damage">Quake</span>
+  </div>
+  <div class="card">
+    <div class="classname">Summoner</div>
+    <span class="skill damage">Summon Titan</span>
+  </div>
+</div>
+
+<h3>Build Final do Black Mage</h3>
+<table>
+  <tr>
+    <th>Slot</th>
+    <th>Escolha</th>
+    <th>Motivo</th>
+    <th>Signo</th>
+  </tr>
+  <tr>
+    <td>Primário</td>
+    <td>Black Mage</td>
+    <td>Habilidades de dano elemental massivo</td>
+    <td>Áries ♈</td>
+  </tr>
+  <tr>
+    <td>Habilidade Secundária</td>
+    <td>Elementalist</td>
+    <td>Magias de dano em área e de alto poder</td>
+    <td>Áries ♈</td>
+  </tr>
+  <tr>
+    <td>Reação</td>
+    <td>Magic Counter</td>
+    <td>Contra-ataque com magia ao ser atacado</td>
+    <td>Áries ♈</td>
+  </tr>
+  <tr>
+    <td>Suporte</td>
+    <td>MP Switch</td>
+    <td>Transforma MP em poder de magia</td>
+    <td>Áries ♈</td>
+  </tr>
+  <tr>
+    <td>Movimento</td>
+    <td>Move+2</td>
+    <td>Mobilidade para manter a distância dos inimigos</td>
+    <td>Áries ♈</td>
+  </tr>
+</table>
+
+<!-- White Mage -->
+<h2>White Mage</h2>
+<div class="tree">
+  <div class="card">
+    <div class="classname">White Mage</div>
+    <span class="skill heal">Cura</span>
+    <span class="skill heal">Raise</span>
+    <span class="skill support">Protect</span>
+    <span class="skill support">Shell</span>
+    <span class="skill support">Esna</span>
+  </div>
+  <div class="card">
+    <div class="classname">Priest</div>
+    <span class="skill heal">Cura Excecional</span>
+    <span class="skill support">Faith</span>
+  </div>
+  <div class="card">
+    <div class="classname">Oracle</div>
+    <span class="skill support">Do As You Please</span>
+  </div>
+  <div class="card">
+    <div class="classname">Summoner</div>
+    <span class="skill support">Summon Titan</span>
+  </div>
+</div>
+
+<h3>Build Final do White Mage</h3>
+<table>
+  <tr>
+    <th>Slot</th>
+    <th>Escolha</th>
+    <th>Motivo</th>
+    <th>Signo</th>
+  </tr>
+  <tr>
+    <td>Primário</td>
+    <td>White Mage</td>
+    <td>Habilidades de cura essenciais para o time</td>
+    <td>Câncer ♋</td>
+  </tr>
+  <tr>
+    <td>Habilidade Secundária</td>
+    <td>Priest</td>
+    <td>Melhoria nas magias de cura e buff</td>
+    <td>Câncer ♋</td>
+  </tr>
+  <tr>
+    <td>Reação</td>
+    <td>Reraise</td>
+    <td>Reviver automaticamente ao morrer</td>
+    <td>Câncer ♋</
